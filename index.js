@@ -1,5 +1,5 @@
 const contacts = require("./contacts");
-const argv = require("yargs").argv;
+const { program } = require("commander");
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
@@ -23,4 +23,13 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.warn("\x1B[31m Unknown action type!");
   }
 };
-invokeAction(argv);
+
+program
+  .option("-a, --action <types>")
+  .option("-i, --id <types>")
+  .option("-n, --name <types>")
+  .option("-e, --email <types>")
+  .option("-p, --phone <types>");
+program.parse();
+const options = program.opts();
+invokeAction(options);
