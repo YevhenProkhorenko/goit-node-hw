@@ -27,7 +27,6 @@ async function addContact({ name, email, phone }) {
 }
 
 async function removeContact(contactId) {
-  // const contactId = String(id);
   const contacts = await listContacts();
   const index = contacts.findIndex((item) => item.id === contactId);
   if (index === -1) {
