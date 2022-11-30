@@ -1,5 +1,5 @@
 const contacts = require("./contacts");
-// const argv = require("yargs").argv;
+const argv = require("yargs").argv;
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
@@ -23,7 +23,4 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.warn("\x1B[31m Unknown action type!");
   }
 };
-invokeAction({
-  action: "remove",
-  id: "20PG6yaKw3XA56J3q7z6M",
-});
+invokeAction(argv);
